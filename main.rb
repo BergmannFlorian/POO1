@@ -3,4 +3,7 @@ Dir.glob("models/*").each{|file|
     require_relative file
 }
 
-p Client.all
+client = Client.find(2)
+p client.ordered_products.cheap
+
+# p OrderItem.all.bulk.map(&:products)

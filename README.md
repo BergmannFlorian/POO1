@@ -35,4 +35,9 @@ Create entry
 
     irb
     require "./main.rb"
+    Client.create(firstname: firstname, lastname: lastname)
 
+    user2.orders.create(status: "En cours de préparation")
+
+
+    rake -T db
