@@ -39,5 +39,6 @@ Create entry
 
     user2.orders.create(status: "En cours de préparation")
 
+    
 
     rake -T db
