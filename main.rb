@@ -33,19 +33,22 @@ Dir.glob("models/*").each{|file|
 
 # Exigence 8 ---------------------------------------------------------
 
-supplier1 = Supplier.create(name: 'Dubat')
-supplier2 = Supplier.create(name: 'McDo')
+# supplier1 = Supplier.create(name: 'Dubat')
+# supplier2 = Supplier.create(name: 'McDo')
 
-p supplier1
-p supplier2
+# p supplier1
+# p supplier2
 
-product1 = Product.first
-product1.supplier = supplier1
-product1.save
+# product1 = Product.first
+# product1.supplier = supplier1
+# product1.save
 
-product2 = Product.first
-product2.supplier = supplier2
-product2.save
+# product2 = Product.first
+# product2.supplier = supplier2
+# product2.save
 
-p product1
-p product2
+# p product1
+# p product2
+
+# Exigence 9 ---------------------------------------------------------
+
