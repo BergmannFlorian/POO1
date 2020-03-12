@@ -15,10 +15,17 @@ Dir.glob("models/*").each{|file|
 
 # p order.save!
 
-order = Order.first
+# order = Order.first
 
 # p order.total_price
 
-order.order_items.create(quantity: 1, item_price: 1, product: Product.first)
+# order.order_items.create(quantity: 1, item_price: 1, product: Product.first)
 
-p order.order_items
+# p order.order_items
+
+individual = Individual.create(firstname: 'Indi', lastname: "Indi")
+compagny = Compagny.create(firstname: 'Comp', lastname: "Comp")
+
+p individual
+p compagny
+

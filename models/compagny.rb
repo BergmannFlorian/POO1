@@ -1,0 +1,3 @@
+class Compagny < Client
+
+end
