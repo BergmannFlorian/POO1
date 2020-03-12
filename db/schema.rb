@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_080342) do
+ActiveRecord::Schema.define(version: 2020_03_12_080900) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", limit: 50
@@ -45,7 +45,9 @@ ActiveRecord::Schema.define(version: 2020_03_12_080342) do
     t.decimal "price", precision: 10, scale: 2
     t.string "description"
     t.bigint "category_id"
+    t.bigint "supplier_id"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
   create_table "suppliers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -56,4 +58,5 @@ ActiveRecord::Schema.define(version: 2020_03_12_080342) do
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "clients"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "suppliers"
 end
