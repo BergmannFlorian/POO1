@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_090147) do
+ActiveRecord::Schema.define(version: 2020_03_12_134036) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", limit: 50
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_090147) do
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "comment", null: false
     t.integer "target_id", null: false
-    t.integer "target_type", null: false
+    t.string "target_type", limit: 50, default: "", null: false
   end
 
   create_table "order_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_090147) do
     t.string "description"
     t.bigint "category_id"
     t.bigint "supplier_id"
+    t.integer "stock"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end

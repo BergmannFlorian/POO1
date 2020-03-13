@@ -1,7 +1,15 @@
 require_relative 'connection'
+
 Dir.glob("models/*").each{|file|
     require_relative file
 }
+require 'rails/observers/activerecord/active_record'
+Dir.glob("observers/*").each{|file|
+    require_relative file
+}
+
+ActiveRecord::Base.observers << :product_observer
+ActiveRecord::Base.instantiate_observers
 
 # client = Client.find(2)
 # p client.ordered_products.cheap
@@ -23,7 +31,7 @@ Dir.glob("models/*").each{|file|
 
 # p order.order_items
 
-# Exigence 7 --------------------------------------------------------
+# Exigence 6 --------------------------------------------------------
 
 # individual = Individual.create(firstname: 'Indi', lastname: "Indi")
 # compagny = Compagny.create(firstname: 'Comp', lastname: "Comp")
@@ -31,7 +39,7 @@ Dir.glob("models/*").each{|file|
 # p individual
 # p compagny
 
-# Exigence 8 ---------------------------------------------------------
+# Exigence 7 ---------------------------------------------------------
 
 # supplier1 = Supplier.create(name: 'Dubat')
 # supplier2 = Supplier.create(name: 'McDo')
@@ -50,5 +58,15 @@ Dir.glob("models/*").each{|file|
 # p product1
 # p product2
 
+# Exigence 8 ---------------------------------------------------------
+
+# product = Product.first
+# p product.comments.create(comment: "C'est un beau produit")
+
+# supplier = Supplier.first
+# p supplier.comments.create(comment: "C'est un beau fournisseur")
+
 # Exigence 9 ---------------------------------------------------------
 
+product = Product.first
+product.update(stock: 10)
