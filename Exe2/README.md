@@ -31,6 +31,14 @@ Run migration
 
     rake db:migrate
 
+Run seed
+
+    rake db:seed
+
+Compact
+
+    rake db:{create,migrate,seed}
+
 Create entry
 
     irb

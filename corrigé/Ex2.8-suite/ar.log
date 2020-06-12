@@ -1,0 +1,67 @@
+# Logfile created on 2020-06-11 08:18:16 +0200 by logger.rb/66358
+D, [2020-06-11T08:18:16.955826 #11296] DEBUG -- :    (0.3ms)  SET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483
+D, [2020-06-11T08:18:17.023334 #11296] DEBUG -- :   Order Load (1.7ms)  SELECT orders.*, SUM(quantity*item_price) AS total_price FROM `orders` INNER JOIN `order_items` ON `order_items`.`order_id` = `orders`.`id` GROUP BY orders.id ORDER BY total_price DESC LIMIT 1
+D, [2020-06-11T08:18:17.025636 #11296] DEBUG -- :   Category Load (0.3ms)  SELECT `categories`.* FROM `categories`
+D, [2020-06-11T08:18:17.046399 #11296] DEBUG -- : === Category.never_ordered_a
+D, [2020-06-11T08:18:17.047413 #11296] DEBUG -- :   Category Load (0.3ms)  SELECT `categories`.* FROM `categories`
+D, [2020-06-11T08:18:17.047661 #11296] DEBUG -- : === Category.never_ordered_b
+D, [2020-06-11T08:18:17.048370 #11296] DEBUG -- :   Category Load (0.3ms)  SELECT `categories`.* FROM `categories`
+D, [2020-06-11T08:18:17.048703 #11296] DEBUG -- : === Category.never_ordered_c
+D, [2020-06-11T08:18:17.052477 #11296] DEBUG -- :   Category Load (1.3ms)  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` NOT IN (SELECT `categories`.`id` FROM `categories` INNER JOIN `products` ON `products`.`category_id` = `categories`.`id` INNER JOIN `order_items` ON `order_items`.`product_id` = `products`.`id` INNER JOIN `orders` ON `orders`.`id` = `order_items`.`order_id`) LIMIT 11
+D, [2020-06-11T08:18:17.070284 #11296] DEBUG -- :   Client Load (0.7ms)  SELECT `clients`.* FROM `clients` LEFT OUTER JOIN `orders` ON `orders`.`client_id` = `clients`.`id` WHERE `orders`.`id` IS NULL
+D, [2020-06-11T08:18:17.071242 #11296] DEBUG -- :   Client Load (0.2ms)  SELECT `clients`.* FROM `clients` LEFT OUTER JOIN `orders` ON `orders`.`client_id` = `clients`.`id` WHERE `orders`.`id` IS NULL
+D, [2020-06-11T08:18:17.072192 #11296] DEBUG -- :   Client Load (0.3ms)  SELECT `clients`.* FROM `clients` LEFT OUTER JOIN `orders` ON `orders`.`client_id` = `clients`.`id` WHERE `orders`.`id` IS NULL
+D, [2020-06-11T08:18:17.074112 #11296] DEBUG -- :   Order Load (0.3ms)  SELECT `orders`.* FROM `orders` WHERE `orders`.`created_at` BETWEEN '2020-06-04 06:18:17' AND '2020-06-07 06:18:17'
+D, [2020-06-11T08:19:54.502296 #2536] DEBUG -- :    (0.5ms)  SET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483
+D, [2020-06-11T08:19:54.537170 #2536] DEBUG -- :   Order Load (0.3ms)  SELECT orders.*, SUM(quantity*item_price) AS total_price FROM `orders` INNER JOIN `order_items` ON `order_items`.`order_id` = `orders`.`id` GROUP BY orders.id ORDER BY total_price DESC LIMIT 1
+D, [2020-06-11T08:19:54.539176 #2536] DEBUG -- :   Category Load (0.2ms)  SELECT `categories`.* FROM `categories`
+D, [2020-06-11T08:19:54.580906 #2536] DEBUG -- :   Product Load (0.3ms)  SELECT `products`.* FROM `products` WHERE `products`.`category_id` = 1
+D, [2020-06-11T08:19:54.598831 #2536] DEBUG -- :   OrderItem Exists? (0.4ms)  SELECT 1 AS one FROM `order_items` WHERE `order_items`.`product_id` = 1 LIMIT 1
+D, [2020-06-11T08:19:54.599871 #2536] DEBUG -- :   OrderItem Exists? (0.3ms)  SELECT 1 AS one FROM `order_items` WHERE `order_items`.`product_id` = 2 LIMIT 1
+D, [2020-06-11T08:19:54.600718 #2536] DEBUG -- :   OrderItem Exists? (0.3ms)  SELECT 1 AS one FROM `order_items` WHERE `order_items`.`product_id` = 3 LIMIT 1
+D, [2020-06-11T08:19:54.601590 #2536] DEBUG -- :   Product Load (0.2ms)  SELECT `products`.* FROM `products` WHERE `products`.`category_id` = 2
+D, [2020-06-11T08:19:54.602368 #2536] DEBUG -- :   OrderItem Exists? (0.2ms)  SELECT 1 AS one FROM `order_items` WHERE `order_items`.`product_id` = 4 LIMIT 1
+D, [2020-06-11T08:19:54.602851 #2536] DEBUG -- :   OrderItem Exists? (0.2ms)  SELECT 1 AS one FROM `order_items` WHERE `order_items`.`product_id` = 5 LIMIT 1
+D, [2020-06-11T08:19:54.602998 #2536] DEBUG -- : === Category.never_ordered_a
+D, [2020-06-11T08:19:54.603419 #2536] DEBUG -- :   Category Load (0.2ms)  SELECT `categories`.* FROM `categories`
+D, [2020-06-11T08:19:54.603977 #2536] DEBUG -- :   Product Load (0.2ms)  SELECT `products`.* FROM `products` WHERE `products`.`category_id` = 1
+D, [2020-06-11T08:19:54.604580 #2536] DEBUG -- :   OrderItem Exists? (0.1ms)  SELECT 1 AS one FROM `order_items` WHERE `order_items`.`product_id` = 1 LIMIT 1
+D, [2020-06-11T08:19:54.605104 #2536] DEBUG -- :   OrderItem Exists? (0.2ms)  SELECT 1 AS one FROM `order_items` WHERE `order_items`.`product_id` = 2 LIMIT 1
+D, [2020-06-11T08:19:54.605601 #2536] DEBUG -- :   OrderItem Exists? (0.1ms)  SELECT 1 AS one FROM `order_items` WHERE `order_items`.`product_id` = 3 LIMIT 1
+D, [2020-06-11T08:19:54.606141 #2536] DEBUG -- :   Product Load (0.2ms)  SELECT `products`.* FROM `products` WHERE `products`.`category_id` = 2
+D, [2020-06-11T08:19:54.606677 #2536] DEBUG -- :   OrderItem Exists? (0.1ms)  SELECT 1 AS one FROM `order_items` WHERE `order_items`.`product_id` = 4 LIMIT 1
+D, [2020-06-11T08:19:54.607174 #2536] DEBUG -- :   OrderItem Exists? (0.2ms)  SELECT 1 AS one FROM `order_items` WHERE `order_items`.`product_id` = 5 LIMIT 1
+D, [2020-06-11T08:19:54.607338 #2536] DEBUG -- : === Category.never_ordered_b
+D, [2020-06-11T08:19:54.607733 #2536] DEBUG -- :   Category Load (0.2ms)  SELECT `categories`.* FROM `categories`
+D, [2020-06-11T08:19:54.626990 #2536] DEBUG -- :   OrderItem Exists? (0.5ms)  SELECT 1 AS one FROM `order_items` INNER JOIN `products` ON `order_items`.`product_id` = `products`.`id` WHERE `products`.`category_id` = 1 LIMIT 1
+D, [2020-06-11T08:19:54.627995 #2536] DEBUG -- :   OrderItem Exists? (0.3ms)  SELECT 1 AS one FROM `order_items` INNER JOIN `products` ON `order_items`.`product_id` = `products`.`id` WHERE `products`.`category_id` = 2 LIMIT 1
+D, [2020-06-11T08:19:54.628340 #2536] DEBUG -- : === Category.never_ordered_c
+D, [2020-06-11T08:19:54.630074 #2536] DEBUG -- :   Category Load (0.4ms)  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` NOT IN (SELECT `categories`.`id` FROM `categories` INNER JOIN `products` ON `products`.`category_id` = `categories`.`id` INNER JOIN `order_items` ON `order_items`.`product_id` = `products`.`id` INNER JOIN `orders` ON `orders`.`id` = `order_items`.`order_id`) LIMIT 11
+D, [2020-06-11T08:19:54.642911 #2536] DEBUG -- :   Client Load (0.3ms)  SELECT `clients`.* FROM `clients` LEFT OUTER JOIN `orders` ON `orders`.`client_id` = `clients`.`id` WHERE `orders`.`id` IS NULL
+D, [2020-06-11T08:19:54.653369 #2536] DEBUG -- :   Client Load (0.5ms)  SELECT `clients`.* FROM `clients` LEFT OUTER JOIN `orders` ON `orders`.`client_id` = `clients`.`id` WHERE `orders`.`id` IS NULL
+D, [2020-06-11T08:19:54.654340 #2536] DEBUG -- :    (0.1ms)  BEGIN
+D, [2020-06-11T08:19:54.664386 #2536] DEBUG -- :   Comment Load (0.3ms)  SELECT `comments`.* FROM `comments` WHERE `comments`.`author_id` = 1
+D, [2020-06-11T08:19:54.668235 #2536] DEBUG -- :   Comment Destroy (0.3ms)  DELETE FROM `comments` WHERE `comments`.`id` = 3
+D, [2020-06-11T08:19:54.668978 #2536] DEBUG -- :   Comment Destroy (0.2ms)  DELETE FROM `comments` WHERE `comments`.`id` = 4
+D, [2020-06-11T08:19:54.669593 #2536] DEBUG -- :   Individual Destroy (0.3ms)  DELETE FROM `clients` WHERE `clients`.`id` = 1
+D, [2020-06-11T08:19:54.672171 #2536] DEBUG -- :    (2.2ms)  COMMIT
+D, [2020-06-11T08:19:54.672978 #2536] DEBUG -- :    (0.1ms)  BEGIN
+D, [2020-06-11T08:19:54.673284 #2536] DEBUG -- :   Comment Load (0.2ms)  SELECT `comments`.* FROM `comments` WHERE `comments`.`author_id` = 2
+D, [2020-06-11T08:19:54.673678 #2536] DEBUG -- :   Individual Destroy (0.2ms)  DELETE FROM `clients` WHERE `clients`.`id` = 2
+D, [2020-06-11T08:19:54.675877 #2536] DEBUG -- :    (2.1ms)  COMMIT
+D, [2020-06-11T08:19:54.676400 #2536] DEBUG -- :    (0.1ms)  BEGIN
+D, [2020-06-11T08:19:54.676799 #2536] DEBUG -- :   Comment Load (0.2ms)  SELECT `comments`.* FROM `comments` WHERE `comments`.`author_id` = 3
+D, [2020-06-11T08:19:54.677200 #2536] DEBUG -- :   Individual Destroy (0.1ms)  DELETE FROM `clients` WHERE `clients`.`id` = 3
+D, [2020-06-11T08:19:54.679108 #2536] DEBUG -- :    (1.8ms)  COMMIT
+D, [2020-06-11T08:19:54.679614 #2536] DEBUG -- :    (0.1ms)  BEGIN
+D, [2020-06-11T08:19:54.679862 #2536] DEBUG -- :   Comment Load (0.2ms)  SELECT `comments`.* FROM `comments` WHERE `comments`.`author_id` = 4
+D, [2020-06-11T08:19:54.680257 #2536] DEBUG -- :   Comment Destroy (0.1ms)  DELETE FROM `comments` WHERE `comments`.`id` = 1
+D, [2020-06-11T08:19:54.680502 #2536] DEBUG -- :   Comment Destroy (0.1ms)  DELETE FROM `comments` WHERE `comments`.`id` = 2
+D, [2020-06-11T08:19:54.680862 #2536] DEBUG -- :   Company Destroy (0.2ms)  DELETE FROM `clients` WHERE `clients`.`id` = 4
+D, [2020-06-11T08:19:54.683034 #2536] DEBUG -- :    (2.0ms)  COMMIT
+D, [2020-06-11T08:19:54.683748 #2536] DEBUG -- :    (0.2ms)  BEGIN
+D, [2020-06-11T08:19:54.684270 #2536] DEBUG -- :   Comment Load (0.3ms)  SELECT `comments`.* FROM `comments` WHERE `comments`.`author_id` = 5
+D, [2020-06-11T08:19:54.684860 #2536] DEBUG -- :   Company Destroy (0.2ms)  DELETE FROM `clients` WHERE `clients`.`id` = 5
+D, [2020-06-11T08:19:54.686846 #2536] DEBUG -- :    (1.8ms)  COMMIT
+D, [2020-06-11T08:19:54.687612 #2536] DEBUG -- :   Client Load (0.2ms)  SELECT `clients`.* FROM `clients` LEFT OUTER JOIN `orders` ON `orders`.`client_id` = `clients`.`id` WHERE `orders`.`id` IS NULL
+D, [2020-06-11T08:19:54.688435 #2536] DEBUG -- :   Order Load (0.2ms)  SELECT `orders`.* FROM `orders` WHERE `orders`.`created_at` BETWEEN '2020-06-04 06:19:54' AND '2020-06-07 06:19:54'
